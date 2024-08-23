@@ -1,0 +1,15 @@
+\hypertarget{dir_3b5db01090a7e73480f569227ae191d0}{}\section{C\+:/\+Users/\+Elvis/\+Desktop/\+Naves Directory Reference}
+\label{dir_3b5db01090a7e73480f569227ae191d0}\index{C\+:/\+Users/\+Elvis/\+Desktop/\+Naves Directory Reference@{C\+:/\+Users/\+Elvis/\+Desktop/\+Naves Directory Reference}}
+\subsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \hyperlink{_pantalla_8h}{Pantalla.\+h}
+\begin{DoxyCompactList}\small\item\em Permite realizar programas interactivos que usan gráficos sin necesidad de conocer los detalles de la visualización gráfica ni de la programación dirigida por eventos. Evidentemente, utilizando S\+DL directamente se pueden escribir programas más potentes y eficientes. El esquema básico para hacer una animación con el wrapper consiste en lo siguiente\+:~\newline
+~\newline
+mientras (\hyperlink{_pantalla_8h_a19c2511cb80edbbca98085aa2654e03d}{Pantalla\+\_\+\+Activa()}) \{ ~\newline
+ ~~~ Detectar los eventos que se hayan producido usando las funciones \hyperlink{_pantalla_8h_a7550aa56314abe307597eebcfc188f23}{Pantalla\+\_\+\+Tecla\+Pulsada()} o \hyperlink{_pantalla_8h_a39ae9f1e619495488bae063e565cf35d}{Pantalla\+\_\+\+Raton\+Boton\+Pulsado()}. ~\newline
+ ~~~ Modificar el estado de la animación en función de los evantos detectados. ~\newline
+ ~~~ Componer el siguiente frame de la animación usando las funciones de dibujo. ~\newline
+ ~~~ Mostrar el frame que se acaba de componer usando la función \hyperlink{_pantalla_8h_a4b8d43981074eecab7140f8e2212009f}{Pantalla\+\_\+\+Actualiza()}. ~\newline
+ ~~~ Esperar unos milisegundos utilizando la función \hyperlink{_pantalla_8h_a4e9a4ed117b616a16c9973a1df38ced9}{Pantalla\+\_\+\+Espera()} (50 para conseguir unos 20fps) para que de tiempo al ojo humano a ver lo que ha pasado. ~\newline
+\}. \end{DoxyCompactList}\end{DoxyCompactItemize}
