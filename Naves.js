@@ -1,12 +1,6 @@
-#include "Naves.h"
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
-#include <time.h>
-
-#define ACELERACION 250
-#define POS_INICIAL_X ANCHO/2
-#define POS_INICIAL_Y ALTO/2
+const ACELERACION = 250
+const POS_INICIAL_X = ANCHO / 2
+const POS_INICIAL_Y = ALTO / 2
 
 struct VectorRep {
 	float x;

@@ -1,82 +1,72 @@
-#include "Pantalla.h"
-#include "Naves.h"
-#include "ListaNaves.h"
-#include "Fractal.h"
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
+const NAVE = 0
+const MALO = 1
+const FRECUENCIA = 20
 
-#define NAVE 0
-#define MALO 1
-#define FRECUENCIA 20
-
-int main ( int argc, char **argv ) {
-
-	srand(time(NULL));
+async function main(argc, argv) {
 
 	Pantalla_Crea("Light", ANCHO, ALTO);
 
-    Imagen cargando = Pantalla_ImagenLee("Img/Cargando.bmp", 1);
+	let cargando = await Pantalla_ImagenLee("Img/Cargando.bmp", 1);
 	Pantalla_DibujaImagen(cargando, ANCHO/2-546/2, ALTO/2-119/2, 546, 119);
 	Pantalla_Actualiza();
 
 
-	Imagen empezar1 = Pantalla_ImagenLee("Img/Menu/Empezar1.bmp", 0);
-	Imagen empezar2 = Pantalla_ImagenLee("Img/Menu/Empezar2.bmp", 0);
-	Imagen salir1 = Pantalla_ImagenLee("Img/Menu/Salir1.bmp", 0);
-	Imagen salir2 = Pantalla_ImagenLee("Img/Menu/Salir2.bmp", 0);
+	let empezar1 = await Pantalla_ImagenLee("Img/Menu/Empezar1.bmp", 0);
+	let empezar2 = await Pantalla_ImagenLee("Img/Menu/Empezar2.bmp", 0);
+	let salir1 = await Pantalla_ImagenLee("Img/Menu/Salir1.bmp", 0);
+	let salir2 = await Pantalla_ImagenLee("Img/Menu/Salir2.bmp", 0);
 
+	// Imagen imgnave[360];
+	// Cargar_Imagenes("Nave", imgnave);
+	// Imagen imgmalo[360];
+	// Cargar_Imagenes("Malo", imgmalo);
+	// Imagen imgbala[360];
+	// Cargar_Imagenes("Bala", imgbala);
 
+	let balas = Crea_Lista();
+	let malos = Crea_Lista();
+	// let nave = Crea_Nave(NAVE);
 
-	Imagen imgnave[360];
-	Cargar_Imagenes("Nave", imgnave);
-	Imagen imgmalo[360];
-	Cargar_Imagenes("Malo", imgmalo);
-	Imagen imgbala[360];
-	Cargar_Imagenes("Bala", imgbala);
+	let f = Fractal_Crea(Pantalla_Anchura()/2, 0, 1);
+	let g = Fractal_Crea(225, Pantalla_Altura(), -1);
+	let h = Fractal_Crea(Pantalla_Anchura()-225, Pantalla_Altura(), -1);
 
-	Lista balas = Crea_Lista();
-	Lista malos = Crea_Lista();
-	Nave nave = Crea_Nave(NAVE);
-	Fractal f = Fractal_Crea(Pantalla_Anchura()/2, 0, 1);
-	Fractal g = Fractal_Crea(225, Pantalla_Altura(), -1);
-	Fractal h = Fractal_Crea(Pantalla_Anchura()-225, Pantalla_Altura(), -1);
+	let x = 0;
+	let y = 0;
+	let sal = 0;
+	let juego = 0;
+	let contador = 0;
 
-	double x = 0;
-	double y = 0;
-	int sal = 0;
-	int juego = 0;
-	int contador = 0;
-
-	while (Pantalla_Activa() && !sal) {
-		Pantalla_RatonCoordenadas(&x, &y);
+	function MainLoop() {
+	if (Pantalla_Activa() && !sal) {
+		// Pantalla_RatonCoordenadas(&x, &y);
 		Pantalla_DibujaRellenoFondo(0, 0, 100, 255);
 		Fractal_Dibuja(f);
 		Fractal_Dibuja(g);
 		Fractal_Dibuja(h);
 
 		if (juego) {
-			if ( (rand()%FRECUENCIA) == 0 ) {
-				Inserta_Lista(malos, Crea_Nave(MALO));
-				contador ++;
-				printf ("%d\n", contador);
-			}
-			if (Pantalla_RatonBotonPulsado(SDL_BUTTON_LEFT)) {
-				Inserta_Lista (balas, Crea_Bala(nave));
-			}
-			Actualiza_ListaBalas (balas);
-			Actualiza_NavePrincipal(nave, x, y);
-			Actualiza_Lista(malos, Get_NavePosicionX(nave), Get_NavePosicionY(nave));
-			Colision_ListaConLista(balas, malos);
-			Dibuja_Lista(balas, imgbala);
-			Dibuja_Lista(malos, imgmalo);
-			Dibuja_Nave(nave, imgnave);
-			if (Pantalla_TeclaPulsada(SDL_SCANCODE_ESCAPE) || Colision_NaveConLista(nave, malos)) {
-				juego = 0;
-				Libera_Lista(balas);
-				Libera_Lista(malos);
-				Libera_Nave(nave);
-			}
+    // 		if ( (rand()%FRECUENCIA) == 0 ) {
+    // 			Inserta_Lista(malos, Crea_Nave(MALO));
+    // 			contador ++;
+    // 			printf ("%d\n", contador);
+    // 		}
+    // 		if (Pantalla_RatonBotonPulsado(SDL_BUTTON_LEFT)) {
+    // 			Inserta_Lista (balas, Crea_Bala(nave));
+    // 		}
+    // 		Actualiza_ListaBalas (balas);
+    // 		Actualiza_NavePrincipal(nave, x, y);
+    // 		Actualiza_Lista(malos, Get_NavePosicionX(nave), Get_NavePosicionY(nave));
+    // 		Colision_ListaConLista(balas, malos);
+    // 		Dibuja_Lista(balas, imgbala);
+    // 		Dibuja_Lista(malos, imgmalo);
+    // 		Dibuja_Nave(nave, imgnave);
+    // 		if (Pantalla_TeclaPulsada(SDL_SCANCODE_ESCAPE) || Colision_NaveConLista(nave, malos)) {
+    // 			juego = 0;
+    // 			Libera_Lista(balas);
+    // 			Libera_Lista(malos);
+    // 			Libera_Nave(nave);
+    // 		}
 		} else {
 			if (x > 1366/2-375/2 && x < 1366/2+375/2 && y > 150 && y < 150+126) {
 				Pantalla_DibujaImagen(empezar2, Pantalla_Anchura()/2-416/2, 144, 416, 139);
@@ -100,8 +90,10 @@ int main ( int argc, char **argv ) {
 			}
 		}
 		Pantalla_Actualiza();
-		Pantalla_Espera(40);
+		setTimeout(MainLoop, 40);
 	}
+	else
+	{
 	Fractal_Libera(f);
 	Fractal_Libera(g);
 	Fractal_Libera(h);
@@ -113,6 +105,9 @@ int main ( int argc, char **argv ) {
 	Libera_Imagenes(imgmalo);
 	Libera_Imagenes(imgnave);
 	Pantalla_Libera();
+	}
+	}
+	MainLoop();
 	return 0;
 }
 
