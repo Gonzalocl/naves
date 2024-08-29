@@ -13,6 +13,7 @@ function Pantalla_Crea(titulo, w, h) {
 	canvas = document.createElement('canvas');
 	canvas.width = w;
 	canvas.height = h;
+	canvas.style.background = "black";
 	document.body.appendChild(canvas);
 	ctx = canvas.getContext("2d");
 
@@ -61,9 +62,6 @@ function Pantalla_Activa() {
 	return true;
 }
 
-// function Pantalla_Espera(ms) {
-// }
-
 function Pantalla_Actualiza() {
 }
 
@@ -83,16 +81,10 @@ function Pantalla_ColorTrazo(r, g, b, a) {
 	ctx.strokeStyle = `rgb(${r}, ${g}, ${b})`;
 }
 
-// function Pantalla_ColorRelleno(r, g, b, a) {
-// }
-
 function Pantalla_DibujaRellenoFondo(r, g, b, a) {
 	ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-
-// function Pantalla_DibujaPunto(x, y) {
-// }
 
 function Pantalla_DibujaLinea(x1, y1, x2, y2) {
 	ctx.beginPath();
@@ -100,18 +92,6 @@ function Pantalla_DibujaLinea(x1, y1, x2, y2) {
 	ctx.lineTo(x2, y2);
 	ctx.stroke();
 }
-
-// function Pantalla_DibujaTriangulo(x1, y1, x2, y2, x3, y3) {
-// }
-
-// function Pantalla_DibujaRectangulo(x, y, w, h) {
-// }
-
-// function Pantalla_DibujaCirculo(x, y, r) {
-// }
-
-// function Pantalla_DibujaTexto(st, x, y) {
-// }
 
 async function Pantalla_ImagenLee(fichero, transparencia) {
 	const img = new Image();
