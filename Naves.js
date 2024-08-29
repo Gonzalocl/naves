@@ -138,16 +138,16 @@ function Crea_Nave(tipo) {
 	} else {
 		nuevo.pos.x = POS_INICIAL_X;
 		nuevo.pos.y = POS_INICIAL_Y;
-		nuevo.pos0 = nuevo.pos;
+		nuevo.pos0 = {...nuevo.pos};
 	}
 	nuevo.radio = 30;
 	nuevo.v.x = 0;
 	nuevo.v.y = 0;
-	nuevo.v0 = nuevo.v;
-	nuevo.a = nuevo.v;
-	nuevo.a0 = nuevo.v;
-	nuevo.t = nuevo.v;
-	nuevo.t0 = nuevo.v;
+	nuevo.v0 = {...nuevo.v};
+	nuevo.a = {...nuevo.v};
+	nuevo.a0 = {...nuevo.v};
+	nuevo.t = {...nuevo.v};
+	nuevo.t0 = {...nuevo.v};
 	return nuevo;
 }
 
