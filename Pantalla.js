@@ -78,11 +78,11 @@ function Pantalla_TeclaPulsada(scancode) {
 }
 
 function Pantalla_ColorTrazo(r, g, b, a) {
-	ctx.strokeStyle = `rgb(${r}, ${g}, ${b})`;
+	ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${a})`;
 }
 
 function Pantalla_DibujaRellenoFondo(r, g, b, a) {
-	ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+	ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${a})`;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
