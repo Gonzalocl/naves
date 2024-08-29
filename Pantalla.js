@@ -9,6 +9,7 @@ let escapeDown;
 
 function Pantalla_Crea(titulo, w, h) {
 	document.title = titulo;
+	document.body.style.margin = "0";
 	canvas = document.createElement('canvas');
 	canvas.width = w;
 	canvas.height = h;
