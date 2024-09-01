@@ -48,6 +48,7 @@ function Pantalla_Crea(titulo, w, h) {
 }
 
 function Pantalla_Libera() {
+    close();
 }
 
 function Pantalla_Anchura() {
