@@ -52,9 +52,6 @@ async function main(argc, argv) {
                     contador++;
                     console.log(contador);
                 }
-                if (Pantalla_RatonBotonPulsado(SDL_BUTTON_LEFT)) {
-                    Inserta_Lista(balas, Crea_Bala(nave));
-                }
                 Actualiza_ListaBalas(balas);
                 Actualiza_NavePrincipal(nave, x, y);
                 Actualiza_Lista(malos, Get_NavePosicionX(nave), Get_NavePosicionY(nave));
@@ -62,6 +59,9 @@ async function main(argc, argv) {
                 Dibuja_Lista(balas, imgbala);
                 Dibuja_Lista(malos, imgmalo);
                 Dibuja_Nave(nave, imgnave);
+                if (Pantalla_RatonBotonPulsado(SDL_BUTTON_LEFT)) {
+                    Inserta_Lista(balas, Crea_Bala(nave));
+                }
                 if (Pantalla_TeclaPulsada(SDL_SCANCODE_ESCAPE) || Colision_NaveConLista(nave, malos)) {
                     juego = 0;
                     Libera_Lista(balas);
