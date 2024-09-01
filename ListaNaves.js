@@ -1,16 +1,7 @@
-
-
-
-
-
-
-
 class Lista {
     n = new Nave();
     sig;
 }
-
-
 
 function Crea_Lista() {
     let cabecera = new Lista();
@@ -18,9 +9,8 @@ function Crea_Lista() {
     return cabecera;
 }
 
-
-function Libera_Lista(l){
-    while(l !== undefined) {
+function Libera_Lista(l) {
+    while (l !== undefined) {
         let borrar = l;
         l = l.sig;
         Libera_Nave(borrar.n);
@@ -28,19 +18,16 @@ function Libera_Lista(l){
     }
 }
 
-
-function Inserta_Lista(l, n) {//nu
+function Inserta_Lista(l, n) {
     let nuevo = new Lista();
     nuevo.n = n;
     nuevo.sig = l.sig;
     l.sig = nuevo;
 }
 
-
 function Recupera_Lista(l) {
     return l.sig.n;
 }
-
 
 function Longitud_Lista(l) {
     let c = 0;
@@ -51,14 +38,12 @@ function Longitud_Lista(l) {
     return c;
 }
 
-
 function Siguiente_Lista(l) {
     return l.sig;
 }
 
-
 function Dibuja_Lista(l, img) {
-    while(l.sig !== undefined) {
+    while (l.sig !== undefined) {
         Dibuja_Nave(l.sig.n, img);
         l = l.sig;
     }
@@ -74,7 +59,7 @@ function Borrar_ListaNodo(l) {
 function Actualiza_Lista(l, x, y) {
     while (l.sig !== undefined) {
         Actualiza_Nave(l.sig.n, x, y);
-        if ((Get_NavePosicionX(l.sig.n)<0-31) || (Get_NavePosicionX(l.sig.n)>Pantalla_Anchura()+31) || (Get_NavePosicionY(l.sig.n)<0-31) || (Get_NavePosicionY(l.sig.n)>Pantalla_Altura()+31)) {
+        if ((Get_NavePosicionX(l.sig.n) < 0 - 31) || (Get_NavePosicionX(l.sig.n) > Pantalla_Anchura() + 31) || (Get_NavePosicionY(l.sig.n) < 0 - 31) || (Get_NavePosicionY(l.sig.n) > Pantalla_Altura() + 31)) {
             Borrar_ListaNodo(l);
         } else {
             l = l.sig;
@@ -85,7 +70,7 @@ function Actualiza_Lista(l, x, y) {
 function Actualiza_ListaBalas(l) {
     while (l.sig !== undefined) {
         Actualiza_Balas(l.sig.n);
-        if ((Get_NavePosicionX(l.sig.n)<0-31) || (Get_NavePosicionX(l.sig.n)>Pantalla_Anchura()+31) || (Get_NavePosicionY(l.sig.n)<0-31) || (Get_NavePosicionY(l.sig.n)>Pantalla_Altura()+31)) {
+        if ((Get_NavePosicionX(l.sig.n) < 0 - 31) || (Get_NavePosicionX(l.sig.n) > Pantalla_Anchura() + 31) || (Get_NavePosicionY(l.sig.n) < 0 - 31) || (Get_NavePosicionY(l.sig.n) > Pantalla_Altura() + 31)) {
             Borrar_ListaNodo(l);
         } else {
             l = l.sig;
@@ -94,7 +79,7 @@ function Actualiza_ListaBalas(l) {
 }
 
 function Colision_NaveConLista(n, l) {
-    while(l.sig !== undefined && !Colision_Nave(Recupera_Lista(l), n)) {
+    while (l.sig !== undefined && !Colision_Nave(Recupera_Lista(l), n)) {
         l = l.sig;
     }
     if (l.sig !== undefined) {
@@ -106,15 +91,10 @@ function Colision_NaveConLista(n, l) {
 
 function Colision_ListaConLista(a, b) {
     while (a.sig !== undefined) {
-        if(Colision_NaveConLista(a.sig.n, b)) {
+        if (Colision_NaveConLista(a.sig.n, b)) {
             Borrar_ListaNodo(a);
         } else {
             a = a.sig;
         }
     }
 }
-
-
-
-
-
