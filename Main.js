@@ -22,6 +22,7 @@ async function main(argc, argv) {
     let imgbala = [];
     await Cargar_Imagenes("Bala", imgbala);
 
+    closeGameInstructions();
     progressBar.close();
 
     let balas = Crea_Lista();
