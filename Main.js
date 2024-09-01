@@ -1,65 +1,65 @@
-#include "Pantalla.h"
-#include "Naves.h"
-#include "ListaNaves.h"
-#include "Fractal.h"
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
 
-#define NAVE 0
-#define MALO 1
-#define FRECUENCIA 20
 
-int main ( int argc, char **argv ) {
 
-	srand(time(NULL));
+
+
+
+
+
+const NAVE = 0
+const MALO = 1
+const FRECUENCIA = 20
+
+async function main ( argc, argv ) {
+
+
 
 	Pantalla_Crea("Light", ANCHO, ALTO);
 
-    Imagen cargando = Pantalla_ImagenLee("Img/Cargando.bmp", 1);
+	let cargando = await Pantalla_ImagenLee("Img/Cargando.bmp", 1);
 	Pantalla_DibujaImagen(cargando, ANCHO/2-546/2, ALTO/2-119/2, 546, 119);
 	Pantalla_Actualiza();
 
 
-	Imagen empezar1 = Pantalla_ImagenLee("Img/Menu/Empezar1.bmp", 0);
-	Imagen empezar2 = Pantalla_ImagenLee("Img/Menu/Empezar2.bmp", 0);
-	Imagen salir1 = Pantalla_ImagenLee("Img/Menu/Salir1.bmp", 0);
-	Imagen salir2 = Pantalla_ImagenLee("Img/Menu/Salir2.bmp", 0);
+	let empezar1 = await Pantalla_ImagenLee("Img/Menu/Empezar1.bmp", 0);
+	let empezar2 = await Pantalla_ImagenLee("Img/Menu/Empezar2.bmp", 0);
+	let salir1 = await Pantalla_ImagenLee("Img/Menu/Salir1.bmp", 0);
+	let salir2 = await Pantalla_ImagenLee("Img/Menu/Salir2.bmp", 0);
 
 
 
-	Imagen imgnave[360];
-	Cargar_Imagenes("Nave", imgnave);
-	Imagen imgmalo[360];
-	Cargar_Imagenes("Malo", imgmalo);
-	Imagen imgbala[360];
-	Cargar_Imagenes("Bala", imgbala);
+	let imgnave = [];
+	await Cargar_Imagenes("Nave", imgnave);
+	let imgmalo = [];
+	await Cargar_Imagenes("Malo", imgmalo);
+	let imgbala = [];
+	await Cargar_Imagenes("Bala", imgbala);
 
-	Lista balas = Crea_Lista();
-	Lista malos = Crea_Lista();
-	Nave nave = Crea_Nave(NAVE);
-	Fractal f = Fractal_Crea(Pantalla_Anchura()/2, 0, 1);
-	Fractal g = Fractal_Crea(225, Pantalla_Altura(), -1);
-	Fractal h = Fractal_Crea(Pantalla_Anchura()-225, Pantalla_Altura(), -1);
+	let balas = Crea_Lista();
+	let malos = Crea_Lista();
+	let nave = Crea_Nave(NAVE);
+	let f = Fractal_Crea(Pantalla_Anchura()/2, 0, 1);
+	let g = Fractal_Crea(225, Pantalla_Altura(), -1);
+	let h = Fractal_Crea(Pantalla_Anchura()-225, Pantalla_Altura(), -1);
 
-	double x = 0;
-	double y = 0;
-	int sal = 0;
-	int juego = 0;
-	int contador = 0;
-
-	while (Pantalla_Activa() && !sal) {
-		Pantalla_RatonCoordenadas(&x, &y);
+	let x = 0;
+	let y = 0;
+	let sal = 0;
+	let juego = 0;
+	let contador = 0;
+	function MainLoop() {
+	if (Pantalla_Activa() && !sal) {
+		const {mouseX: x, mouseY: y} = Pantalla_RatonCoordenadas();
 		Pantalla_DibujaRellenoFondo(0, 0, 100, 255);
 		Fractal_Dibuja(f);
 		Fractal_Dibuja(g);
 		Fractal_Dibuja(h);
 
 		if (juego) {
-			if ( (rand()%FRECUENCIA) == 0 ) {
+			if ( (rand()%FRECUENCIA) === 0 ) {
 				Inserta_Lista(malos, Crea_Nave(MALO));
 				contador ++;
-				printf ("%d\n", contador);
+				console.log(contador);
 			}
 			if (Pantalla_RatonBotonPulsado(SDL_BUTTON_LEFT)) {
 				Inserta_Lista (balas, Crea_Bala(nave));
@@ -100,8 +100,10 @@ int main ( int argc, char **argv ) {
 			}
 		}
 		Pantalla_Actualiza();
-		Pantalla_Espera(40);
+		setTimeout(MainLoop, 40);
 	}
+	else
+	{
 	Fractal_Libera(f);
 	Fractal_Libera(g);
 	Fractal_Libera(h);
@@ -113,6 +115,9 @@ int main ( int argc, char **argv ) {
 	Libera_Imagenes(imgmalo);
 	Libera_Imagenes(imgnave);
 	Pantalla_Libera();
+	}
+	}
+	MainLoop();
 	return 0;
 }
 
