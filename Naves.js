@@ -43,6 +43,7 @@ async function Cargar_Imagenes(nombre, array) {
 
         let ruta = `Img/${nombre}/${nombre}${String(i).padStart(3, '0')}.bmp`;
         array[i] = await Pantalla_ImagenLee(ruta, 1);
+        progressBar.step();
     }
 }
 
