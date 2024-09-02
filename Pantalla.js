@@ -7,6 +7,9 @@ let mouseClick;
 let spaceDown;
 let escapeDown;
 
+let editorCanvas = document.createElement("canvas");
+let editorCtx = editorCanvas.getContext("2d");
+
 function Pantalla_Crea(titulo, w, h) {
     document.title = titulo;
     document.body.style.margin = "0";
@@ -98,6 +101,29 @@ async function Pantalla_ImagenLee(fichero, transparencia) {
     const img = new Image();
     img.src = fichero;
     await img.decode();
+    if (!transparencia) {
+        return img;
+    }
+
+    editorCanvas.width = img.width;
+    editorCanvas.height = img.height;
+    editorCtx.drawImage(img, 0, 0);
+    let imageData = editorCtx.getImageData(0, 0, img.width, img.height);
+    let data = imageData.data;
+    let r = data[0];
+    let g = data[1];
+    let b = data[2];
+
+    for (let i = 0; i < data.length; i += 4) {
+        if (data[i] === r && data[i + 1] === g && data[i + 2] === b) {
+            data[i + 3] = 0;
+        }
+    }
+
+    editorCtx.putImageData(imageData, 0, 0);
+    img.src = editorCanvas.toDataURL();
+    await img.decode();
+
     return img;
 }
 
