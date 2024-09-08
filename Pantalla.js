@@ -111,7 +111,7 @@ function Pantalla_DibujaLinea(x1, y1, x2, y2) {
 }
 
 async function Pantalla_ImagenLee(fichero, transparencia) {
-    const img = new Image();
+    const img = document.createElement("img");
     img.src = fichero;
     await img.decode();
     if (!transparencia) {
