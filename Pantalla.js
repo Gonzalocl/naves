@@ -25,12 +25,16 @@ function Pantalla_Crea(titulo, w, h) {
         mouseY = e.clientY - canvas.getBoundingClientRect().top;
     }
 
-    document.onmousedown = function () {
-        mouseClick = true;
+    document.onmousedown = function (e) {
+        if (e.button === 0) {
+            mouseClick = true;
+        }
     }
 
-    document.onmouseup = function () {
-        mouseClick = false;
+    document.onmouseup = function (e) {
+        if (e.button === 0) {
+            mouseClick = false;
+        }
     }
 
     document.ontouchmove = function (e) {
