@@ -78,6 +78,8 @@ async function main(argc, argv) {
                         balas = Crea_Lista();
                         malos = Crea_Lista();
                         nave = Crea_Nave(NAVE);
+                        contador = 0;
+                        enemyCounterSetEnemies(contador);
                     }
                 } else {
                     Pantalla_DibujaImagen(empezar1, Pantalla_Anchura() / 2 - 375 / 2, 150, 375, 126);
