@@ -68,6 +68,6 @@ function Fractal_Dibuja(f) {
         d = 14;
     }
     f.altura = Pantalla_Altura() + (f.altura + d) % Pantalla_Altura();
-    Pantalla_ColorTrazo(255, 255, 255, 255);
+    Pantalla_ColorTrazo(146, 147, 180, 255);
     Fractal_Dibujar(a, b, c, 1);
 }
