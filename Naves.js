@@ -41,7 +41,7 @@ function Aceleracion(a, moduloa) {
 async function Cargar_Imagenes(nombre, array) {
     for (let i = 0; i <= 359; i++) {
 
-        let ruta = `Img/${nombre}/${nombre}${String(i).padStart(3, '0')}.bmp`;
+        let ruta = `Img/${nombre}/${nombre}${String(i).padStart(3, "0")}.bmp`;
         array[i] = await Pantalla_ImagenLee(ruta, 1);
         progressBar.step();
     }

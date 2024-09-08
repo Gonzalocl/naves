@@ -13,7 +13,7 @@ let editorCtx = editorCanvas.getContext("2d");
 function Pantalla_Crea(titulo, w, h) {
     document.title = titulo;
     document.body.style.margin = "0";
-    canvas = document.createElement('canvas');
+    canvas = document.createElement("canvas");
     canvas.width = w;
     canvas.height = h;
     canvas.style.background = "black";
