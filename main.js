@@ -15,4 +15,19 @@ function closeGameInstructions() {
     document.body.removeChild(gameInstructions);
 }
 
+let enemyCounter = document.createElement("div");
+enemyCounter.innerText = 0;
+enemyCounter.style.color = "white";
+enemyCounter.style.position = "fixed";
+enemyCounter.style["inset-block-start"] = 0;
+enemyCounter.style["inset-inline-start"] = 0;
+
+function addEnemyCounter() {
+    document.body.appendChild(enemyCounter);
+}
+
+function enemyCounterSetEnemies(e) {
+    enemyCounter.innerText = e;
+}
+
 main();

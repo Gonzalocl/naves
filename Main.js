@@ -23,6 +23,7 @@ async function main(argc, argv) {
     await Cargar_Imagenes("Bala", imgbala);
 
     closeGameInstructions();
+    addEnemyCounter();
     progressBar.close();
 
     let balas = Crea_Lista();
@@ -51,6 +52,7 @@ async function main(argc, argv) {
                     Inserta_Lista(malos, Crea_Nave(MALO));
                     contador++;
                     console.log(contador);
+                    enemyCounterSetEnemies(contador);
                 }
                 Actualiza_ListaBalas(balas);
                 Actualiza_NavePrincipal(nave, x, y);
