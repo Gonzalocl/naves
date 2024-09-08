@@ -17,7 +17,9 @@ function closeGameInstructions() {
 
 let enemyCounter = document.createElement("div");
 enemyCounter.innerText = 0;
-enemyCounter.style.color = "white";
+enemyCounter.style.color = "MediumSpringGreen";
+enemyCounter.style["font-size"] = 40;
+enemyCounter.style["font-weight"] = "bold";
 enemyCounter.style.position = "fixed";
 enemyCounter.style["inset-block-start"] = 0;
 enemyCounter.style["inset-inline-start"] = 0;
