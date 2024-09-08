@@ -33,6 +33,19 @@ function Pantalla_Crea(titulo, w, h) {
         mouseClick = false;
     }
 
+    document.ontouchmove = function (e) {
+        mouseX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+        mouseY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+    }
+
+    document.ontouchstart = function () {
+        mouseClick = true;
+    }
+
+    document.ontouchend = function () {
+        mouseClick = false;
+    }
+
     document.onkeydown = function (e) {
         if (e.code === "Space") {
             spaceDown = true;
