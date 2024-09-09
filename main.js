@@ -32,4 +32,6 @@ function enemyCounterSetEnemies(e) {
     enemyCounter.innerText = e;
 }
 
+let assets = new ZipAsset("assets.zip");
+
 main();
