@@ -207,5 +207,5 @@ function Dibuja_Nave(n, img) {
     let angulo = Angulo_Nave(n);
     let ancho = Pantalla_ImagenAnchura(img);
     let alto = Pantalla_ImagenAltura(img);
-    Pantalla_DibujaImagen(img, n.pos.x - ancho / 2, n.pos.y - alto / 2, ancho, alto);
+    Pantalla_DibujaImagenRotada(img, n.pos.x - ancho / 2, n.pos.y - alto / 2, ancho, alto, -angulo);
 }

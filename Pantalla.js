@@ -148,6 +148,14 @@ function Pantalla_DibujaImagen(imagen, x, y, w, h) {
     ctx.drawImage(imagen, x, y, w, h);
 }
 
+function Pantalla_DibujaImagenRotada(imagen, x, y, w, h, a) {
+    ctx.save();
+    ctx.translate(x + w / 2, y + h / 2);
+    ctx.rotate(a * Math.PI / 180);
+    ctx.drawImage(imagen, -w / 2, -h / 2, w, h);
+    ctx.restore();
+}
+
 function Pantalla_ImagenAnchura(imagen) {
     return imagen.width;
 }
