@@ -21,7 +21,6 @@ async function main(argc, argv) {
 
     closeGameInstructions();
     addEnemyCounter();
-    progressBar.close();
 
     let balas = Crea_Lista();
     let malos = Crea_Lista();

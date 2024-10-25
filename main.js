@@ -1,5 +1,3 @@
-let progressBar = new ProgressBar(1080);
-
 let gameInstructions = document.createElement("div");
 gameInstructions.innerHTML = "Click: disparar.<br>" +
     "Espacio: m&aacute;s velocidad.<br>" +
@@ -31,7 +29,5 @@ function addEnemyCounter() {
 function enemyCounterSetEnemies(e) {
     enemyCounter.innerText = e;
 }
-
-let assets = new ZipAsset("assets.zip");
 
 main();
