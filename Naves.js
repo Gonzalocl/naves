@@ -38,22 +38,6 @@ function Aceleracion(a, moduloa) {
     return a;
 }
 
-async function Cargar_Imagenes(nombre, array) {
-    for (let i = 0; i <= 359; i++) {
-
-        let ruta = `Img/${nombre}/${nombre}${String(i).padStart(3, "0")}.bmp`;
-        array[i] = await Pantalla_ImagenLee(ruta, 1);
-        progressBar.step();
-    }
-}
-
-function Libera_Imagenes(array) {
-    for (let i = 0; i <= 359; i++) {
-        Pantalla_ImagenLibera(array[i]);
-    }
-
-}
-
 function Angulo_Nave(n) {
     let mod = Modulo(n.v);
     let angulo = Math.floor(Math.asin(n.v.y / mod) * 180 / Math.PI);
@@ -221,7 +205,7 @@ function Actualiza_Balas(n) {
 
 function Dibuja_Nave(n, img) {
     let angulo = Angulo_Nave(n);
-    let ancho = Pantalla_ImagenAnchura(img[angulo]);
-    let alto = Pantalla_ImagenAltura(img[angulo]);
-    Pantalla_DibujaImagen(img[angulo], n.pos.x - ancho / 2, n.pos.y - alto / 2, ancho, alto);
+    let ancho = Pantalla_ImagenAnchura(img);
+    let alto = Pantalla_ImagenAltura(img);
+    Pantalla_DibujaImagen(img, n.pos.x - ancho / 2, n.pos.y - alto / 2, ancho, alto);
 }

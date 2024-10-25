@@ -15,12 +15,9 @@ async function main(argc, argv) {
     let salir1 = await Pantalla_ImagenLee("Img/Menu/Salir1.bmp", 0);
     let salir2 = await Pantalla_ImagenLee("Img/Menu/Salir2.bmp", 0);
 
-    let imgnave = [];
-    await Cargar_Imagenes("Nave", imgnave);
-    let imgmalo = [];
-    await Cargar_Imagenes("Malo", imgmalo);
-    let imgbala = [];
-    await Cargar_Imagenes("Bala", imgbala);
+    let imgnave = await Pantalla_ImagenLee("Img/Nave.bmp", 1);
+    let imgmalo = await Pantalla_ImagenLee("Img/Malo.bmp", 1);
+    let imgbala = await Pantalla_ImagenLee("Img/Bala.bmp", 1);
 
     closeGameInstructions();
     addEnemyCounter();
@@ -105,8 +102,8 @@ async function main(argc, argv) {
             Pantalla_ImagenLibera(salir1);
             Pantalla_ImagenLibera(salir2);
             Pantalla_ImagenLibera(cargando);
-            Libera_Imagenes(imgmalo);
-            Libera_Imagenes(imgnave);
+            Pantalla_ImagenLibera(imgmalo);
+            Pantalla_ImagenLibera(imgnave);
             Pantalla_Libera();
         }
     }
